@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 exports.run =  function (bot, message) {
       if (!message.guild) {
   const ozelmesajuyari = new Discord.RichEmbed()
-  .setColor(0xFF0000)
+  .setColor("RANDOM")
   .setDescription('HATA')
   return message.author.sendEmbed(ozelmesajuyari); }
     const guildArray = bot.guilds.array()
@@ -13,7 +13,7 @@ exports.run =  function (bot, message) {
       embed.addField(`${guild.name} (${guild.owner.user.username}#${guild.owner.user.discriminator} (${guild.owner.user.id})) - ${guild.memberCount}`, guild.id);
       embed.setColor(0xff0000)
       embed.setTitle('Servers')
-      embed.setDescription(`Şu an ${bot.guilds.size} server de bulunuyorum`)
+      embed.setDescription(`Şu an ${bot.guilds.size} Sunucu'da Bulunuyorum!`)
     }
     message.channel.send({embed: embed});
   }
@@ -29,5 +29,5 @@ exports.conf = {
 exports.help = {
   name: 'sunucularım',
   description: 'Bu Komut Gizlidir',
-  usage: 'sw'
+  usage: 'sv'
 };
