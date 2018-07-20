@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
 
         const embed = new Discord.RichEmbed()
             .setColor("RANDOM")
-            .setDescription("**Çevirilecek kelimeyi-cümleyi girmediniz.**\nDoğru Kullanım: `bf!çevir <language> <text>`");
+            .setDescription("**Çevirilecek kelimeyi-cümleyi girmediniz.**\nDoğru Kullanım: `bf!çevir <çevirilecekdil> <metin>`");
 
         return message.channel.send(embed);
 
@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
             }).then(res => {
 
                 const embed = new Discord.RichEmbed()
-                    .setAuthor("Translator", bot.user.displayAvatarURL)
+                    .setAuthor("Recep | Fides Tarafından Hazırlanan Çeviri", bot.user.displayAvatarURL)
                     .addField(`Varsayılan Dil`, `\`\`\`${args}\`\`\``)
                     .setColor("RANDOM")
                     .addField(`Çevirilen Dil`, `\`\`\`${res.text}\`\`\``);
