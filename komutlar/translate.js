@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
             args = args.join(' ').slice(1)
             let translation;
 
-            if (!Langs.includes(transArg)) return message.channel.send(`**Lütfen Çevirilecek dili giriniz.\nÖrnek kullanım: bf!çevir english test**`);
+            if (!Langs.includes(transArg)) return message.channel.send(`**Lütfen Çevirilecek dili giriniz.\nÖrnek kullanım: bf!çevir english Selam**`);
             args = args.slice(transArg.length);
 
             translate(args, {
@@ -35,9 +35,9 @@ module.exports.run = async (bot, message, args) => {
 
                 const embed = new Discord.RichEmbed()
                     .setAuthor("Translator", bot.user.displayAvatarURL)
-                    .addField(`Input`, `\`\`\`${args}\`\`\``)
+                    .addField(`Varsayılan Dil`, `\`\`\`${args}\`\`\``)
                     .setColor("RANDOM")
-                    .addField(`Output`, `\`\`\`${res.text}\`\`\``);
+                    .addField(`Çevirilen Dil`, `\`\`\`${res.text}\`\`\``);
                 return message.channel.send(embed);
 
             });
