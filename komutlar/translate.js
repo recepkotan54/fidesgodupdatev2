@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
 
         const embed = new Discord.RichEmbed()
             .setColor("RANDOM")
-            .setDescription("**Çevirilecek kelimeyi-cümleyi girmediniz.**\nDoğru Kullanım: `e-çevir <language> <text>`");
+            .setDescription("**Çevirilecek kelimeyi-cümleyi girmediniz.**\nDoğru Kullanım: `bf!çevir <language> <text>`");
 
         return message.channel.send(embed);
 
@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
 
         if (args.length === undefined) {
 
-            return message.channel.send('**Please give me something to translate.** `e-çevir <language> <text>`');
+            return message.channel.send('**Please give me something to translate.** `bf!çevir <language> <text>`');
 
         } else {
 
@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
             args = args.join(' ').slice(1)
             let translation;
 
-            if (!Langs.includes(transArg)) return message.channel.send(`**Lütfen Çevirilecek dili giriniz.\nÖrnek kullanım: e-çevir english test**`);
+            if (!Langs.includes(transArg)) return message.channel.send(`**Lütfen Çevirilecek dili giriniz.\nÖrnek kullanım: bf!çevir english test**`);
             args = args.slice(transArg.length);
 
             translate(args, {
