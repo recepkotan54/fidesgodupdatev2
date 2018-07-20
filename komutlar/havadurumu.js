@@ -1,16 +1,16 @@
-const discord = require("discord.js"); 
+const discord = require("discord.js");
 const client = new discord.Client();
 module.exports.run = async(bot, message, args) => {
 const api = 'http://api.openweathermap.org/data/2.5/weather?q=' + args[0] + '&appid=9085d68629e6d57983a2c93a8fa2cd66';
- let mesaj = args.slice(0).join(' ');   
- if (mesaj.length < 1) return message.reply('Bir şehir ismi yazmalsınız.');
+ let mesaj = args.slice(0).join(' ');
+ if (mesaj.length < 1) return message.reply(':no_entry: Lütfen hava durumu bilgisini getirtmek için bir şehir ismi girin.');
  try {
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-    function Get(yourUrl){ 
+    function Get(yourUrl){
       var Httpreq = new XMLHttpRequest(); //yagag
       Httpreq.open("GET",yourUrl,false);
       Httpreq.send(null);
-      return Httpreq.responseText; 
+      return Httpreq.responseText;
     }
     var json = JSON.parse(Get(api));
     var coord = json.coord;
@@ -22,7 +22,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
     function windDirection(degree)
     {
-        if (degree < 11 || degree > 348) 
+        if (degree < 11 || degree > 348)
         {
             return "Kuzey";
         }
@@ -107,38 +107,38 @@ return text;
         var currentfahrenheit = currentf1 + 32;
         var ccelsius = Math.round(currentcelsius);
         var cfahrenheit = Math.round(currentfahrenheit);
-    
+
         var highcelsius = hc - 273.15;
         var highf1 = highcelsius * 1.8;
         var highfahrenheit = highf1 + 32;
         var hcelsius = Math.round(highcelsius);
         var hfahrenheit = Math.round(highfahrenheit);
-    
+
         var lowcelsius = lc - 273.15;
         var lowf1 = lowcelsius * 1.8;
-        var lowfahrenheit = lowf1 + 32; 
+        var lowfahrenheit = lowf1 + 32;
         var lcelsius = Math.round(lowcelsius);
         var lfahrenheit = Math.round(lowfahrenheit);
 
 		const embed = new discord.RichEmbed()
-    .setTitle(json.name + ','   + sys.country +   ' için hava durumu gösteriliyor')
+    .setTitle(json.name + ','   + sys.country +   ' için Hava Durumu')
     .setThumbnail('http://openweathermap.org/img/w/' + weather.icon + '.png')
-    .setColor('RANDOM')
+    .setColor(0xff7f00)
     .addField('Koordinatları', 'Enlem: **' + coord.lat + '**\nBoylam: **' + coord.lon + '**', inline=true)
     .addField('Şehrin IDsi', '**' + json.id + '**', inline=true)
     .addField('Rüzgar', 'Yönü: **' + windDirection(wind.deg) + '**\nHızı: **' + wind.speed + 'm/s**', inline=true)
     .addField('Bulut Oranı', '**%' + clouds.all + '**', inline=true)
     .addField('Hava Koşulları', 'Mevcut Sıcaklık: **' + ccelsius + ' °C / ' + cfahrenheit + ' °F**\nEn Yüksek Sıcaklık: **' + hcelsius + ' °C / ' + hfahrenheit + ' °F**\nEn Düşük Sıcaklık: **' + lcelsius + ' °C / ' + lfahrenheit + ' °F**\nNem: **%' + main.humidity + '**\nBarometrik Basınç: **' + main.pressure + '**', inline=true)    //.addField('Güneş', 'Gündoğumu: **' + UnixToDate(sys.sunrise)[1] + '**\nGünbatımı: **' + UnixToDate(sys.sunset)[1] + '**', inline=true)
-    .addField('Güneş','Gündoğumu: **' + UnixToDate(sys.sunrise) + '**\nGünbatımı: **' + UnixToDate(sys.sunset) + '**',inline=true)    
-    return message.channel.sendEmbed(embed); 
+    .addField('Güneş','Gündoğumu: **' + UnixToDate(sys.sunrise) + '**\nGünbatımı: **' + UnixToDate(sys.sunset) + '**',inline=true)
+    return message.channel.sendEmbed(embed);
 }
 catch (e) {
     const error = new discord.RichEmbed()
-    .setColor('RANDOM')
+    .setColor(0xff7f00)
     .setDescription('Bir hata ile karşılaştık : \n`' + e.message + '`')
     return message.channel.sendEmbed(error);
 }
-    }; 
+    };
 
 exports.conf = {
   enabled: true,
@@ -150,5 +150,5 @@ aliases: ['havadurumu'],
 exports.help = {
   name: 'havadurumu',
   description: 'İstediğiniz şeyi bota yazdırır.',
-  usage: 'duyuru [duyuru]'
+  usage: 'havadurumu [duyuru]'
 };
