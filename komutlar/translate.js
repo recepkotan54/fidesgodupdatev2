@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
             }).then(res => {
 
                 const embed = new Discord.RichEmbed()
-                    .setAuthor("Recep  Fides Tarafından Hazırlanan Çeviri", bot.user.displayAvatarURL)
+                    .setAuthor("Çeviri", bot.user.displayAvatarURL)
                     .addField(`Varsayılan Dil`, `\`\`\`${args}\`\`\``)
                     .setColor("RANDOM")
                     .addField(`Çevirilen Dil`, `\`\`\`${res.text}\`\`\``);
