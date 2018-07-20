@@ -11,8 +11,8 @@ exports.run =  function (bot, message) {
     const guilds = guildArray.splice(0,25);
     for (const guild of guilds) {
       embed.addField(`${guild.name} (${guild.owner.user.username}#${guild.owner.user.discriminator} (${guild.owner.user.id})) - ${guild.memberCount}`, guild.id);
-      embed.setColor(0xff0000)
-      embed.setTitle('Servers')
+      embed.setColor("RANDOM")
+      embed.setTitle('Sunucular')
       embed.setDescription(`Şu an ${bot.guilds.size} Sunucu'da Bulunuyorum!`)
     }
     message.channel.send({embed: embed});
