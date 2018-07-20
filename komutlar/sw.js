@@ -22,7 +22,7 @@ exports.run =  function (bot, message) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['sw'],
+  aliases: ['sv'],
   permLevel: 4
 };
 
